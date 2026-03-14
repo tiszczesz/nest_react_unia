@@ -16,12 +16,19 @@ node nazwa_skryptu.js
 ```
 
 ## uruchomienie "kompilatora typescript"
+
 ```console
 npx tsc nazwa_skryptu.ts
 ```
 
 ## zainicjowanie typescript w projekcie
+
 ```console
   npx tsc -init // utworzy sie plik tsconfig.json
 ```
 
+## instalowanie typów typescript dla node
+
+```console
+npm i @types/node -D
+```
