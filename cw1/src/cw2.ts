@@ -1,3 +1,4 @@
+import { colors,actualDate,getColor } from "./colors.js"; 
 // const a = "ala ma kota";
 const a: string = "ala ma kota";
 const b: number = 42;
@@ -11,8 +12,11 @@ const user: User = {
   age: 30,
   date: new Date(),
 };
-const colors: string[] = ["red", "green", "blue"];
+
 console.log(a.toUpperCase());
+console.log(actualDate.toLocaleDateString());
 console.log(user);
 console.log(colors);
+console.log(getColor(1));
+console.log(getColor(6));
 //console.log(b.toUpperCase());
