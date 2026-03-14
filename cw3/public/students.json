@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "firstname": "Anna",
+    "lastname": "Kowalska",
+    "date": "2001-01-15T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "firstname": "Piotr",
+    "lastname": "Nowak",
+    "date": "2000-06-22T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "firstname": "Maria",
+    "lastname": "Wiśniewska",
+    "date": "2002-03-09T00:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "firstname": "Krzysztof",
+    "lastname": "Wójcik",
+    "date": "1999-11-30T00:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "firstname": "Agnieszka",
+    "lastname": "Kamińska",
+    "date": "2001-08-14T00:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "firstname": "Michał",
+    "lastname": "Lewandowski",
+    "date": "2000-02-18T00:00:00.000Z"
+  },
+  {
+    "id": 7,
+    "firstname": "Katarzyna",
+    "lastname": "Zielińska",
+    "date": "2002-12-01T00:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "firstname": "Tomasz",
+    "lastname": "Szymański",
+    "date": "1998-07-25T00:00:00.000Z"
+  },
+  {
+    "id": 9,
+    "firstname": "Joanna",
+    "lastname": "Dąbrowska",
+    "date": "2001-05-05T00:00:00.000Z"
+  },
+  {
+    "id": 10,
+    "firstname": "Paweł",
+    "lastname": "Kozłowski",
+    "date": "1999-09-19T00:00:00.000Z"
+  }
+]
