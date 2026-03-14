@@ -20,3 +20,8 @@ node nazwa_skryptu.js
 npx tsc nazwa_skryptu.ts
 ```
 
+## zainicjowanie typescript w projekcie
+```console
+  npx tsc -init // utworzy sie plik tsconfig.json
+```
+

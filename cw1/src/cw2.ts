@@ -11,7 +11,8 @@ const user: User = {
   age: 30,
   date: new Date(),
 };
-
+const colors: string[] = ["red", "green", "blue"];
 console.log(a.toUpperCase());
 console.log(user);
+console.log(colors);
 //console.log(b.toUpperCase());
