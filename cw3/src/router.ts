@@ -21,6 +21,7 @@ router.get('/index', async (req: Request, res: Response) => {
     const context = await fs.readFile(path.join(pathToPublic, 'index.html'), 'utf-8');
     res.status(200).send(context);
 });
+// Endpoint do pobierania wszystkich studentów
 router.get('/api/students', async (req: Request, res: Response) => {
     // wykorzystanie klasy FileRepo do pobrania ścieżki do pliku students.json
     const fileRepo = new FileRepo('students.json');
@@ -29,6 +30,7 @@ router.get('/api/students', async (req: Request, res: Response) => {
     //console.log(students);
     res.status(200).json(students);
 });
+// Endpoint do pobierania studenta po id
 router.get('/api/students/:id', async (req: Request, res: Response) => {
     const id = parseInt(req.params.id as string);
     if (isNaN(id)) {
@@ -43,6 +45,7 @@ router.get('/api/students/:id', async (req: Request, res: Response) => {
         res.status(404).json({ message: 'Student not found' });
     }
 });
+// Endpoint do dodawania nowego studenta
 router.post('/api/students', async (req: Request, res: Response) => {
     const { firstname, lastname } = req.body;
     const fileRepo = new FileRepo('students.json');
@@ -56,6 +59,7 @@ router.post('/api/students', async (req: Request, res: Response) => {
     await fileRepo.addStudent(newStudent);
     res.status(201).json(newStudent);
 });
+// Endpoint do usuwania studenta
 router.delete('/api/students/:id', async (req: Request, res: Response) => {
     const id = parseInt(req.params.id as string);
     if (isNaN(id)) {
@@ -66,6 +70,7 @@ router.delete('/api/students/:id', async (req: Request, res: Response) => {
     await fileRepo.deleteStudentById(id);
     res.status(200).json({ message: 'Student deleted successfully' });
 });
+// PUT /api/students/:id - aktualizacja danych studenta o podanym id
 router.put('/api/students/:id', async (req: Request, res: Response) => {
     const id = parseInt(req.params.id as string);
     if (isNaN(id)) {
