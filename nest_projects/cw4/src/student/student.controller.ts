@@ -9,4 +9,8 @@ export class StudentController {
   getStudent() {
     return this.studentService.getStudent();
   }
+  @Get('/date')
+  getDate() {
+    return this.studentService.getDate();
+  }
 }

@@ -9,4 +9,7 @@ export class StudentService {
   getStudent() {
     return this.student;
   }
+  getDate() {
+    return new Date().toLocaleDateString();
+  }
 }
