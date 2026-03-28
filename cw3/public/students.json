@@ -58,5 +58,11 @@
     "firstname": "Paweł",
     "lastname": "Kozłowski",
     "date": "1999-09-19T00:00:00.000Z"
+  },
+  {
+    "id": 11,
+    "firstname": "Pawełek",
+    "lastname": "Rybski",
+    "date": "1999-09-19T00:00:00.000Z"
   }
 ]
