@@ -66,6 +66,29 @@ router.delete('/api/students/:id', async (req: Request, res: Response) => {
     await fileRepo.deleteStudentById(id);
     res.status(200).json({ message: 'Student deleted successfully' });
 });
+router.put('/api/students/:id', async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id as string);
+    if (isNaN(id)) {
+        res.status(400).json({ message: 'Invalid student ID' });
+        return;
+    }
+    const { firstname, lastname } = req.body;
+    const fileRepo = new FileRepo('students.json');
+    const existingStudent = await fileRepo.getStudentById(id);
 
+    if (!existingStudent) {
+        res.status(404).json({ message: 'Student not found' });
+        return;
+    }
+
+    const updatedStudent: Student = {
+        ...existingStudent,
+        firstname,
+        lastname
+    };
+
+    await fileRepo.updateStudent(updatedStudent);
+    res.status(200).json(updatedStudent);
+});
 
 export default router;

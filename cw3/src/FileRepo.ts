@@ -56,4 +56,13 @@ export class FileRepo {
         //zapisanie z powrotem do pliku
         await this.saveStudents(updatedStudents);   
     }
+    updateStudent = async (updatedStudent: Student): Promise<void> => {
+        const students = await this.getAllStudents();
+        //mapowanie tablicy studentów, aby zaktualizować studenta o podanym id
+        const newStudents = students.map(student => 
+            student.id === updatedStudent.id ? updatedStudent : student
+        );
+        await this.saveStudents(newStudents);
+    }
+
 }
