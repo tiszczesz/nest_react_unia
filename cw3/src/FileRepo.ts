@@ -49,4 +49,11 @@ export class FileRepo {
     }
     //napisac metodę deletestudentById(id: number): Promise<void> 
     // która usunie studenta o podanym id z pliku
+    deleteStudentById = async (id: number): Promise<void> => {
+        const students = await this.getAllStudents();
+        //filtrowanie tablicy studentów, aby usunąć studenta o podanym id
+        const updatedStudents = students.filter(student => student.id !== id);
+        //zapisanie z powrotem do pliku
+        await this.saveStudents(updatedStudents);   
+    }
 }
