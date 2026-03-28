@@ -47,4 +47,6 @@ export class FileRepo {
         // a następnie Math.max zwraca największą wartość z tej tablicy   
         return Math.max(...students.map(s => s.id));
     }
+    //napisac metodę deletestudentById(id: number): Promise<void> 
+    // która usunie studenta o podanym id z pliku
 }
