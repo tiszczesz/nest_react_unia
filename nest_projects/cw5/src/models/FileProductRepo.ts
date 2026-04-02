@@ -28,6 +28,7 @@ export class FileProductRepo implements IProductRepo {
 
   async getProductById(id: number): Promise<Product | null> {
     const products = await this.GetFromFile();
+    console.log('products', products);
     return products.find((p) => p.id === id) || null;
   }
   addProduct(product: Product): Promise<void> {
