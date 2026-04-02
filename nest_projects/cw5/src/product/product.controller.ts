@@ -35,7 +35,10 @@ export class ProductController {
   }
   @Post()
   @ApiOperation({ summary: 'Add a new product' })
-  @ApiResponse({ status: 201, description: 'Product created' })
+  @ApiResponse({
+    status: 201,
+    description: 'Product created',
+  })
   async addProduct(@Body() product: { name: string; price: number }) {
     const newProduct = {
       id: -1,
