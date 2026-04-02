@@ -1,4 +1,11 @@
-import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { ProductService } from './product.service';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
@@ -25,5 +32,17 @@ export class ProductController {
       throw new NotFoundException('Product not found');
     }
     return product;
+  }
+  @Post()
+  @ApiOperation({ summary: 'Add a new product' })
+  @ApiResponse({ status: 201, description: 'Product created' })
+  async addProduct(@Body() product: { name: string; price: number }) {
+    const newProduct = {
+      id: -1,
+      name: product.name,
+      price: product.price,
+      date: new Date(),
+    };
+    await this.productService.addProduct(newProduct);
   }
 }
