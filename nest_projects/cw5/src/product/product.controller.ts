@@ -76,7 +76,7 @@ export class ProductController {
     if (isNaN(idNum)) {
       throw new NotFoundException('Invalid product ID');
     }
-    const productToUpdate = { ...product, id: idNum, date: new Date() };
+    const productToUpdate = { id: idNum, ...product, date: new Date() };
     await this.productService.updateProduct(productToUpdate);
   }
 }
