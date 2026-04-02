@@ -8,6 +8,7 @@ import {
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ProductDto } from 'src/models/ProductDto';
 
 @Controller('product')
 export class ProductController {
@@ -38,8 +39,9 @@ export class ProductController {
   @ApiResponse({
     status: 201,
     description: 'Product created',
+    type: ProductDto,
   })
-  async addProduct(@Body() product: { name: string; price: number }) {
+  async addProduct(@Body() product: ProductDto) {
     const newProduct = {
       id: -1,
       name: product.name,

@@ -4,6 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors(); //zezwolenie na żądania z innych domen (np. Reacta)
   const config = new DocumentBuilder()
     .setTitle('Produkty API')
     .setDescription('The produkty API description')
