@@ -16,13 +16,19 @@ export class FileProductRepo implements IProductRepo {
   async getProducts(): Promise<Product[]> {
     //console.log('pathToPublic', pathToPublic);
     console.log('fileName', this.fileName);
-    const productsJson = await fs.readFile(this.fileName, 'utf-8');
-    const products: Product[] = JSON.parse(productsJson) as Product[];
+    const products: Product[] = await this.GetFromFile();
 
     return products;
   }
-  getProductById(id: number): Promise<Product | null> {
-    throw new Error('Method not implemented.');
+  private async GetFromFile() {
+    const productsJson = await fs.readFile(this.fileName, 'utf-8');
+    const products: Product[] = JSON.parse(productsJson) as Product[];
+    return products;
+  }
+
+  async getProductById(id: number): Promise<Product | null> {
+    const products = await this.GetFromFile();
+    return products.find((p) => p.id === id) || null;
   }
   addProduct(product: Product): Promise<void> {
     throw new Error('Method not implemented.');
