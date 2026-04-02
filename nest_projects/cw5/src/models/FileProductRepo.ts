@@ -55,10 +55,19 @@ export class FileProductRepo implements IProductRepo {
   }
   async deleteProductById(id: number): Promise<void> {
     const products = await this.GetFromFile();
+    console.log('products', products);
     const filteredProducts = products.filter((p) => p.id !== id);
+    console.log('filteredProducts', filteredProducts);
     await this.SaveToFile(filteredProducts);
   }
-  updateProduct(product: Product): Promise<void> {
-    throw new Error('Method not implemented.');
+  async updateProduct(product: Product): Promise<void> {
+    const products = await this.GetFromFile();
+    //szukamy indeksu produktu o danym id aby go zaktualizować
+    const index = products.findIndex((p) => p.id === product.id);
+    if (index !== -1) {
+      //produkt o danym id istnieje, aktualizujemy go
+      products[index] = product;
+      await this.SaveToFile(products);
+    }
   }
 }

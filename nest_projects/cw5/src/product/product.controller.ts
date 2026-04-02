@@ -1,10 +1,12 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   NotFoundException,
   Param,
   Post,
+  Put,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -49,5 +51,32 @@ export class ProductController {
       date: new Date(),
     };
     await this.productService.addProduct(newProduct);
+  }
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete product by ID' })
+  @ApiResponse({ status: 200, description: 'Product deleted' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  async deleteProductById(@Param('id') id: string) {
+    const idNum = parseInt(id, 10);
+    if (isNaN(idNum)) {
+      throw new NotFoundException('Invalid product ID');
+    }
+    await this.productService.deleteProductById(idNum);
+  }
+  @Put(':id')
+  @ApiOperation({ summary: 'Update product by ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'Product updated',
+    type: ProductDto,
+  })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  async updateProduct(@Param('id') id: string, @Body() product: ProductDto) {
+    const idNum = parseInt(id, 10);
+    if (isNaN(idNum)) {
+      throw new NotFoundException('Invalid product ID');
+    }
+    const productToUpdate = { ...product, id: idNum, date: new Date() };
+    await this.productService.updateProduct(productToUpdate);
   }
 }
