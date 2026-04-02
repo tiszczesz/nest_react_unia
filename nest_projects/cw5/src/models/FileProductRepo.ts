@@ -2,6 +2,7 @@
 import { IProductRepo } from './IProductRepo';
 import { Product } from './productModel';
 import path from 'path';
+import fs from 'fs/promises';
 
 //const __dirname = path.dirname(fileURLToPath(import.meta.url));
 console.log('dirname', __dirname);
@@ -12,10 +13,13 @@ export class FileProductRepo implements IProductRepo {
   constructor(fileName: string = 'products.json') {
     this.fileName = path.join(pathToPublic, fileName);
   }
-  getProducts(): Promise<Product[]> {
+  async getProducts(): Promise<Product[]> {
     //console.log('pathToPublic', pathToPublic);
     console.log('fileName', this.fileName);
-    return Promise.resolve([]);
+    const productsJson = await fs.readFile(this.fileName, 'utf-8');
+    const products: Product[] = JSON.parse(productsJson) as Product[];
+
+    return products;
   }
   getProductById(id: number): Promise<Product | null> {
     throw new Error('Method not implemented.');
