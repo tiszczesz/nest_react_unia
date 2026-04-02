@@ -5,11 +5,16 @@ import path from 'path';
 
 //const __dirname = path.dirname(fileURLToPath(import.meta.url));
 console.log('dirname', __dirname);
-const pathToPublic = path.join(__dirname, '..', 'public');
+const pathToPublic = path.join(__dirname, '..', '..', 'public');
 
 export class FileProductRepo implements IProductRepo {
+  private readonly fileName: string;
+  constructor(fileName: string = 'products.json') {
+    this.fileName = path.join(pathToPublic, fileName);
+  }
   getProducts(): Promise<Product[]> {
-    console.log('pathToPublic', pathToPublic);
+    //console.log('pathToPublic', pathToPublic);
+    console.log('fileName', this.fileName);
     return Promise.resolve([]);
   }
   getProductById(id: number): Promise<Product | null> {
