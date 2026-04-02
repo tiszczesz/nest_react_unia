@@ -25,14 +25,33 @@ export class FileProductRepo implements IProductRepo {
     const products: Product[] = JSON.parse(productsJson) as Product[];
     return products;
   }
+  private async SaveToFile(products: Product[]) {
+    const productsJson = JSON.stringify(products, null, 2);
+    await fs.writeFile(this.fileName, productsJson, 'utf-8');
+  }
+  private getNextId(products: Product[]): number {
+    if (products.length === 0) {
+      return 1;
+    }
+    let lastId = 0;
+    for (const product of products) {
+      if (product.id > lastId) {
+        lastId = product.id;
+      }
+    }
+    return lastId + 1;
+  }
 
   async getProductById(id: number): Promise<Product | null> {
     const products = await this.GetFromFile();
     console.log('products', products);
     return products.find((p) => p.id === id) || null;
   }
-  addProduct(product: Product): Promise<void> {
-    throw new Error('Method not implemented.');
+  async addProduct(product: Product): Promise<void> {
+    const products = await this.GetFromFile();
+    product.id = this.getNextId(products);
+    products.push(product);
+    await this.SaveToFile(products);
   }
   deleteProductById(id: number): Promise<void> {
     throw new Error('Method not implemented.');
