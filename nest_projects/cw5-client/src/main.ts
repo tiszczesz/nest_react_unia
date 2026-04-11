@@ -1,15 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { SectionResult } from './components/SectionResult';
 import { loadData } from './loadData';
+import { ButtonLoad } from './components/ButtonLoad';
 const app = document.querySelector<HTMLDivElement>('#app');
-const buttonLoad = document.createElement('button');
-buttonLoad.classList.add('btn', 'btn-outline-primary');
-buttonLoad.textContent = 'Załaduj dane';
+const buttonLoad = ButtonLoad();
+
+
 const sectionResult = SectionResult();
 buttonLoad.addEventListener('click', async () => {
   console.log('Ładowanie danych...');
-    sectionResult.textContent = 'Ładowanie danych...';
-  
+    sectionResult.textContent = 'Ładowanie danych...';  
   try {
     const products = await loadData('http://localhost:3000/product');
     console.log('Dane załadowane:', products);
