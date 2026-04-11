@@ -34,19 +34,47 @@ export class MysqlProductRepo implements IProductRepo {
     const [rows] = await this.connection.execute('SELECT * FROM products');
     //Zamykamy połączenie z bazą danych
     await this.connection.end();
+    this.connection = null;
     //Zwracamy pobrane produkty jako tablicę obiektów typu Product
     return rows as Product[];
   }
-  getProductById(id: number): Promise<Product | null> {
-    throw new Error('Method not implemented.');
+  async getProductById(id: number): Promise<Product | null> {
+    await this.getConnection();
+    if (!this.connection) return null;
+    const [rows] = await this.connection.execute(
+      'SELECT * FROM products WHERE id = ?',
+      [id],
+    );
+    await this.connection.end();
+    this.connection = null;
+    const products = rows as Product[];
+    return products.length > 0 ? products[0] : null;
   }
-  addProduct(product: Product): Promise<void> {
-    throw new Error('Method not implemented.');
+  async addProduct(product: Product): Promise<void> {
+    await this.getConnection();
+    if (!this.connection) return;
+    await this.connection.execute(
+      'INSERT INTO products (name, price, date) VALUES (?, ?, ?)',
+      [product.name, product.price, product.date],
+    );
+    await this.connection.end();
+    this.connection = null;
   }
-  deleteProductById(id: number): Promise<void> {
-    throw new Error('Method not implemented.');
+  async deleteProductById(id: number): Promise<void> {
+    await this.getConnection();
+    if (!this.connection) return;
+    await this.connection.execute('DELETE FROM products WHERE id = ?', [id]);
+    await this.connection.end();
+    this.connection = null;
   }
-  updateProduct(product: Product): Promise<void> {
-    throw new Error('Method not implemented.');
+  async updateProduct(product: Product): Promise<void> {
+    await this.getConnection();
+    if (!this.connection) return;
+    await this.connection.execute(
+      'UPDATE products SET name = ?, price = ?, date = ? WHERE id = ?',
+      [product.name, product.price, product.date, product.id],
+    );
+    await this.connection.end();
+    this.connection = null;
   }
 }
