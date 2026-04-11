@@ -2,7 +2,7 @@ import { IProductRepo } from './IProductRepo';
 import { Product } from './productModel';
 import mysql from 'mysql2/promise';
 
-class MysqlProductRepo implements IProductRepo {
+export class MysqlProductRepo implements IProductRepo {
   private connection: mysql.Connection | null; // Replace with actual MySQL connection type
 
   private async createNewConnectio() {

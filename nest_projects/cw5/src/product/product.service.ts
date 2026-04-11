@@ -1,13 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { FileProductRepo } from 'src/models/FileProductRepo';
+//import { FileProductRepo } from 'src/models/FileProductRepo';
 import { type IProductRepo } from 'src/models/IProductRepo';
+import { MysqlProductRepo } from 'src/models/MysqlProductRepo';
 import { Product } from 'src/models/productModel';
 
 @Injectable()
 export class ProductService {
   private readonly productRepo: IProductRepo;
   constructor() {
-    this.productRepo = new FileProductRepo();
+    //this.productRepo = new FileProductRepo();
+    this.productRepo = new MysqlProductRepo();
   }
   async getProducts() {
     return this.productRepo.getProducts();
