@@ -2,8 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { SectionResult } from './components/SectionResult';
 import { loadData } from './loadData';
 import { ButtonLoad } from './components/ButtonLoad';
+import { ProductsTable } from './components/ProductsTable';
 const app = document.querySelector<HTMLDivElement>('#app');
 const buttonLoad = ButtonLoad();
+
 
 
 const sectionResult = SectionResult();
@@ -13,6 +15,9 @@ buttonLoad.addEventListener('click', async () => {
   try {
     const products = await loadData('http://localhost:3000/product');
     console.log('Dane załadowane:', products);
+    const table = ProductsTable(products);
+    sectionResult.textContent = '';
+    sectionResult.appendChild(table);
   } catch (error) {
     console.error('Błąd podczas ładowania danych:', error);
     sectionResult.textContent = 'Błąd podczas ładowania danych.';
