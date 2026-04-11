@@ -9,4 +9,7 @@ export class ProductDto {
   name: string = '';
   @ApiProperty()
   price: number = 0;
+
+  @ApiProperty()
+  date: Date = new Date();
 }

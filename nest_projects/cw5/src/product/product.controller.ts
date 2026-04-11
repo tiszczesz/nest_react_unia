@@ -48,7 +48,7 @@ export class ProductController {
       id: -1,
       name: product.name,
       price: product.price,
-      date: new Date(),
+      date: product.date || new Date(),
     };
     await this.productService.addProduct(newProduct);
   }
@@ -73,10 +73,11 @@ export class ProductController {
   @ApiResponse({ status: 404, description: 'Product not found' })
   async updateProduct(@Param('id') id: string, @Body() product: ProductDto) {
     const idNum = parseInt(id, 10);
+    product.date = product.date || new Date();
     if (isNaN(idNum)) {
       throw new NotFoundException('Invalid product ID');
     }
-    const productToUpdate = { id: idNum, ...product, date: new Date() };
+    const productToUpdate = { id: idNum, ...product };
     await this.productService.updateProduct(productToUpdate);
   }
 }
