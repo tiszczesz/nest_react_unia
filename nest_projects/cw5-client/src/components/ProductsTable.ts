@@ -3,7 +3,7 @@ import type { Product } from '../models/productModel';
 export const ProductsTable = (products: Product[]): HTMLTableElement => {
   const table = document.createElement('table');
   table.id = 'productsTable';
-  table.classList.add('table', 'table-striped');
+  table.classList.add('table', 'table-striped','w-50');
   const thead = document.createElement('thead');
   thead.innerHTML = `
         <tr>
