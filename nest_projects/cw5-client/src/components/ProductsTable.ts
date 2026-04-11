@@ -22,8 +22,8 @@ export const ProductsTable = (products: Product[]): HTMLTableElement => {
     tr.innerHTML = `
             <td>${lp++}</td>
             <td>${product.name}</td>
-            <td>${product.price}</td>
-            <td>${product.date.toLocaleDateString()}</td>
+            <td>${new Number(product.price).toFixed(2)}</td>
+            <td>${new Date(product.date).toLocaleDateString()}</td>
             <td>
                 <button class="btn btn-sm btn-primary">Edytuj</button>
                 <button class="btn btn-sm btn-danger">Usuń</button>
