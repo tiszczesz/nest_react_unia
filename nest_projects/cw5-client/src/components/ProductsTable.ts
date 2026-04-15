@@ -1,13 +1,16 @@
 import type { Product } from '../models/productModel';
 
-export const ProductsTable = (products: Product[]): HTMLTableElement => {
+export const ProductsTable = (
+  products: Product[],
+  onDelete?: (productId: number) => void | Promise<void>
+): HTMLTableElement => {
   const table = document.createElement('table');
   table.id = 'productsTable';
-  table.classList.add('table', 'table-striped','w-50');
+  table.classList.add('table', 'table-striped', 'w-50');
   const thead = document.createElement('thead');
   thead.innerHTML = `
         <tr>
-            <th>ID</th>
+            <th>Lp</th>
             <th>Nazwa</th>
             <th>Cena</th>
             <th>Data</th>
@@ -16,19 +19,34 @@ export const ProductsTable = (products: Product[]): HTMLTableElement => {
     `;
   table.appendChild(thead);
   const tbody = document.createElement('tbody');
-  let lp = 1;
+  let index = 1;
   products.forEach((product) => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
-            <td>${lp++}</td>
-            <td>${product.name}</td>
-            <td>${new Number(product.price).toFixed(2)}</td>
-            <td>${new Date(product.date).toLocaleDateString()}</td>
-            <td>
-                <button class="btn btn-sm btn-primary">Edytuj</button>
-                <button class="btn btn-sm btn-danger">Usuń</button>
-            </td>
+        <td>${index++}</td>
+        <td>${product.name}</td>
+        <td>${new Number(product.price).toFixed(2)}</td>
+        <td>${new Date(product.date).toLocaleDateString()}</td>
         `;
+
+    const actionsCell = document.createElement('td');
+
+    const editButton = document.createElement('button');
+    editButton.className = 'btn btn-sm btn-primary';
+    editButton.textContent = 'Edytuj';
+
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'btn btn-sm btn-danger';
+    deleteButton.textContent = 'Usuń';
+    deleteButton.addEventListener('click', () => {
+      onDelete?.(product.id);
+    });
+
+    actionsCell.appendChild(editButton);
+    actionsCell.appendChild(document.createTextNode(' '));
+    actionsCell.appendChild(deleteButton);
+
+    tr.appendChild(actionsCell);
     tbody.appendChild(tr);
   });
   table.appendChild(tbody);

@@ -1,15 +1,15 @@
 export const ProductForm = (): HTMLFormElement => {
-  const form = document.createElement('form');
-  form.id = 'productForm';
-  form.classList.add('w-50');
-  form.innerHTML = `
+    const form = document.createElement('form');
+    form.id = 'productForm';
+    form.classList.add('w-50');
+    form.innerHTML = `
         <div class="mb-3">
             <label for="productName" class="form-label">Nazwa produktu</label>
             <input type="text" class="form-control" id="productName" name="productName" required>
         </div>
         <div class="mb-3">
             <label for="productPrice" class="form-label">Cena produktu</label>
-            <input type="number" class="form-control" id="productPrice" name="productPrice" required>   
+            <input type="number" class="form-control" id="productPrice" name="productPrice" required step="0.01" min="0">   
         </div>
         <div class="mb-3">
             <label for="productDate" class="form-label">Data</label>
@@ -17,5 +17,5 @@ export const ProductForm = (): HTMLFormElement => {
         </div>
         <button type="submit" class="btn btn-primary">Dodaj produkt</button>
     `;
-  return form as HTMLFormElement;
+    return form as HTMLFormElement;
 };
