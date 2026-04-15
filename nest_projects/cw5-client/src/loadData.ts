@@ -9,6 +9,7 @@ const parseJsonBody = async <T>(response: Response): Promise<T | null> => {
     }
 
     try {
+        //parsujemy odpowiedź jako JSON i rzutujemy na typ T tzw. generyczny, który jest określany w momencie wywołania funkcji
         return JSON.parse(bodyText) as T;
     } catch {
         throw new Error('Invalid JSON response from server.');
