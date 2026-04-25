@@ -3,7 +3,7 @@ import './App.css'
 import FormOnChange from './components/FormOnChange'
 
 function App() {
-
+  console.log('render App')
   return (
     <div className='container'>
       <FormOnChange />

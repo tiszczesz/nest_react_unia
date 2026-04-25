@@ -5,10 +5,13 @@ const FormOnChange = () => {
     const [firstname, setFirstname] = useState('');
     const [birthDate, setBirthDate] = useState('');
     const [education, setEducation] = useState('');
+    const [result, setResult] = useState('');
 
     console.log('render')
     function handleSubmit(e: SubmitEvent<HTMLFormElement>): void {
-        e.preventDefault()
+        e.preventDefault();
+        setResult(`Imię: ${firstname}, Data urodzenia: ${birthDate},
+             Wykształcenie: ${education}`);
     }
 
     return (
@@ -16,15 +19,15 @@ const FormOnChange = () => {
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="row m-2">
                     <label className="col-3 text-end" htmlFor="firstname">Podaj imię:</label>
-                    <input onChange={} className="col-6" type="text" id="firstname" />
+                    <input value={firstname} onChange={(e) => setFirstname(e.target.value)} className="col-6" type="text" id="firstname" />
                 </div>
                 <div className="row m-2">
                     <label className="col-3 text-end" htmlFor="birthDate">Podaj datę urodzenia:</label>
-                    <input onChange={} className="col-6" type="date" id="birthDate" />
+                    <input value={birthDate} onChange={(e) => setBirthDate(e.target.value)} className="col-6" type="date" id="birthDate" />
                 </div>
                 <div className="row m-2">
                     <label className="col-3 text-end" htmlFor="education">Podaj poziom wykształcenia:</label>
-                    <select onChange={} className="col-6" id="education">
+                    <select value={education} onChange={(e) => setEducation(e.target.value)} className="col-6" id="education">
                         <option value="podstawowe">podstawowe</option>
                         <option value="średnie">średnie</option>
                         <option value="wyższe">wyższe</option>
@@ -37,7 +40,7 @@ const FormOnChange = () => {
                 </div>
             </form>
             <hr />
-            <div className="border p-2">tu będzie wynik</div>
+            <div className="border p-2">{result}</div>
         </>
     )
 }
