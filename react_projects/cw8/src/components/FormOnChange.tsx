@@ -20,7 +20,7 @@ const FormOnChange = () => {
                     </select>
                 </div>
                 <div className="row m-2">
-                    <button className="col-3 offset-3 btn btn-primary" type="submit">
+                    <button className="col-6 offset-3 btn btn-outline-primary" type="submit">
                         Wyślij
                     </button>
                 </div>

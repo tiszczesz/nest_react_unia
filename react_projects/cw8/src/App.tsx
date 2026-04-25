@@ -1,11 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import FormOnChange from './components/FormOnChange'
 
-function App() {  
+function App() {
 
   return (
     <div className='container'>
-      
+      <FormOnChange />
     </div>
   )
 }
