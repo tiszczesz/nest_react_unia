@@ -1,3 +1,5 @@
-export default function fake(){
-    return("fake")
+export default function Fake() {
+    return (
+        <div>fake</div>
+    )
 }
