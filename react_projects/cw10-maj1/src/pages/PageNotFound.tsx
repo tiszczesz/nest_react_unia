@@ -1,8 +1,8 @@
-import React from 'react'
 
-type Props = {}
 
-const PageNotFound = (props: Props) => {
+
+
+const PageNotFound = () => {
   return (
     <div>PageNotFound</div>
   )
