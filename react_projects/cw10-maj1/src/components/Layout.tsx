@@ -10,7 +10,7 @@ const Layout = () => {
                 <NavLink to="/contact" className="myNav-link">Contact</NavLink>
 
             </nav>
-            <main>
+            <main className="container mt-4">
                 <Outlet />
             </main>
             <footer style={{
