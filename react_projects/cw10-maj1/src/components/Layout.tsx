@@ -13,7 +13,14 @@ const Layout = () => {
             <main>
                 <Outlet />
             </main>
-            <footer>
+            <footer style={{
+                position: "absolute",
+                bottom: 0,
+                width: "100%",
+                textAlign: "center",
+                padding: "1rem",
+                backgroundColor: "#f8f9fa",
+            }}>
                 <p>&copy; 2026 My App. All rights reserved.</p>
             </footer>
         </div>
