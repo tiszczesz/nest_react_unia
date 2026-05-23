@@ -4,7 +4,9 @@ import { useState } from "react";
 const FormWithAction = () => {
     const [result, setResult] = useState("");
   return (
-    <div> <form >
+    <div>
+        <h2>Form with Action</h2>
+         <form >
                 <div className="row m-2">
                     <label className="col-3 text-end" htmlFor="firstname">Podaj imię:</label>
                     <input  className="col-6" type="text" id="firstname" />
