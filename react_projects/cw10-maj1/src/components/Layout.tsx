@@ -10,6 +10,7 @@ const Layout = () => {
                 <NavLink to="/contact" className="myNav-link">Contact</NavLink>
                 <NavLink to="/form1" className="myNav-link">FormRef</NavLink>
                 <NavLink to="/form2" className="myNav-link">FormAction</NavLink>
+                <NavLink to="/products" className="myNav-link">Products</NavLink>
 
             </nav>
             <main className="container mt-4">

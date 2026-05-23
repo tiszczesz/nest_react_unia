@@ -7,18 +7,20 @@ import Contact from './pages/Contact';
 import PageNotFound from './pages/PagenotFound';
 import FormWithAction from './pages/FormWithAction';
 import FormWithRef from './pages/FormWithRef';
+import Products from './pages/Products';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
-    children:[
-      {index: true, element: <Home />},
-      {path: "about",element: <About />},
-      {path: "contact",element: <Contact />},
-      {path: "form1",element: <FormWithRef />},
-      {path: "form2",element: <FormWithAction />},
-      {path: "*",element: <PageNotFound />},
+    children: [
+      { index: true, element: <Home /> },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
+      { path: "form1", element: <FormWithRef /> },
+      { path: "form2", element: <FormWithAction /> },
+      { path: "products", element: <Products /> },
+      { path: "*", element: <PageNotFound /> },
     ]
   }
 ]);
