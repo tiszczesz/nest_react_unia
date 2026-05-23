@@ -1,0 +1,12 @@
+a.active {
+  font-weight: bold;
+  color: gray;
+}
+.myNav-link {
+  font-size: 2em;
+  text-decoration: none;
+  color: black;
+}
+.myNav-link:hover {
+  text-decoration: underline;
+}
