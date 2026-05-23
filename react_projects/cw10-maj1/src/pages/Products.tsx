@@ -22,7 +22,24 @@ const Products = () => {
     return (
         <div>
             <h2>Products</h2>
-
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Cena</th>
+                        <th>Data produkcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products.map((product, index) => (
+                        <tr key={index}>
+                            <td>{product.name}</td>
+                            <td style={{ textAlign: "right" }}>{product.price}</td>
+                            <td>{new Date(product.date).toLocaleDateString()}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
