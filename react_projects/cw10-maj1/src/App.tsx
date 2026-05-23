@@ -4,7 +4,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import PageNotFound from './pages/PagenotFound';
+import PageNotFound from './pages/PageNotFound';
 import FormWithAction from './pages/FormWithAction';
 import FormWithRef from './pages/FormWithRef';
 import Products from './pages/Products';
